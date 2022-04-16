@@ -10,10 +10,13 @@
             <a class="nav-link {{ ($title === "Home" ? 'active' : '') }}" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {{ ($title === "About" ? 'active' : '') }}" href="/about">About</a>
+            <a class="nav-link {{ ($title === "About" ? 'active' : '') }}" href="/about">Tentang Website</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {{ ($title === "Info" ? 'active' : '') }}" href="/info">Info</a>
+            <a class="nav-link {{ ($title === "Info" ? 'active' : '') }}" href="/info">Info Project</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {{ ($title === "Pesan" ? 'active' : '') }}" href="/pesan">Pesan Kopi</a>
           </li>
         </ul>
         <ul class="navbar-nav ms-auto">

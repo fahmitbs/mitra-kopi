@@ -33,6 +33,12 @@ Route::get('/info', function () {
     ]);
 });
 
+Route::get('/info', function () {
+    return view('pesan', [
+        "title" => "pesan"
+    ]);
+});
+
 Route::get('/login', [LoginController::class, 'index'])->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
