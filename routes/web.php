@@ -50,3 +50,11 @@ Route::post('/register', [RegisterController::class, 'store']);
 Route::get('/dashboard', function() {
     return view('dashboard.index');
 })->middleware('auth');
+
+Route::get('/mitra', function () {
+    return view('mitra.index');
+})->middleware('auth');
+
+Route::get('/pelanggan', function () {
+    return view('pelanggan.index');
+})->middleware('auth');

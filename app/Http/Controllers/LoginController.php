@@ -24,9 +24,14 @@ class LoginController extends Controller
 
         if(Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/dashboard');
+            if(auth()->user()->role === 0){
+                return redirect()->intended('/dashboard');
+            } else if(auth()->user()->role === 1){
+                return redirect()->intended('/mitra');
+            } else if(auth()->user()->role === 2){
+                return redirect()->intended('/pelanggan');
+            }
         }
-
         return back()->with('loginError', 'Maaf Anda Gagal melakukan Login');
     }
 
