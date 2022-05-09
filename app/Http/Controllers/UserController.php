@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -21,10 +23,6 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -43,9 +41,39 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+
+    public function profil()
     {
-        //
+        $user = Auth()->user('id');
+        // dd($user);
+        return view('mitra.profil',compact('user'));
+    }
+
+    public function update_profil(Request $request, $id)
+    {
+        $user = User::where('id', $id)->first();
+        $name = $request->nama;
+        $alamat = $request->alamat;
+        $nohp = $request->nohp;
+        $pekerjaan = $request->pekerjaan;
+        $email = $request->email;
+        $password = $request->password;
+        if ($password != "") {
+            $user->password = bcrypt($password);
+        }
+            $user->nama = $name;
+            $user->alamat = $alamat;
+            $user->nohp = $nohp;
+            $user->pekerjaan = $pekerjaan;
+            $user->email = $email;
+            $user->save();
+
+        return redirect()->back();
+    }
+
+    public function buat_produk()
+    {
+        return view('mitra.produk');
     }
 
     /**
